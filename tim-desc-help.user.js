@@ -66,7 +66,6 @@
             success: function (res, status) {
                 if (res != null && res.success == true) {
                     console.log(`Created product ${description}`);
-                    localStorage.setItem("last_prd_id", PRODUCT_ID);
                     callback();
                 }
             },
@@ -76,16 +75,13 @@
 
     function __main() {
         let description = document.getElementById("c_product_description").value;
-        let last_prd_id = localStorage.getItem("last_prd_id") || "";
-        __deleteProduct(last_prd_id, function () {
-            __saveProduct(description, __isParoxhYp(), function () {
-                let option = document.createElement("option");
-                option.setAttribute("value", PRODUCT_ID);
-                option.setAttribute("selected", "");
-                option.innerHTML = description;
-                document.getElementById("itemLine").appendChild(option);
-                getItemDefaultValues(invoiceFormat, _companyVat);
-            });
+        __saveProduct(description, __isParoxhYp(), function () {
+            let option = document.createElement("option");
+            option.setAttribute("value", PRODUCT_ID);
+            option.setAttribute("selected", "");
+            option.innerHTML = description;
+            document.getElementById("itemLine").appendChild(option);
+            getItemDefaultValues(invoiceFormat, _companyVat);
         });
     }
 
