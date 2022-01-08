@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Timologio credential store
-// @namespace    timologio-userscripts
+// @namespace    marios-8543-timologio-userscripts
 // @version      0.1
 // @description  Αποθήκευση στοιχείων εισόδου
 // @author       marios8543
