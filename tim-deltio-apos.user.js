@@ -6,6 +6,7 @@
 // @author       marios8543
 // @match        https://mydata.aade.gr/timologio/*
 // @grant        GM_xmlhttpRequest
+// @require      https://raw.githubusercontent.com/davidshimjs/qrcodejs/master/qrcode.min.js
 // ==/UserScript==
 //
 (function () {
