@@ -1,4 +1,4 @@
-/* ΤΡΟΠΟΠΟΙΗΜΕΝΗ ΕΚΔΟΣΗ ΤΟΥ invoice2pdf.js ΜΕ ΥΠΟΣΤΗΡΙΞΗ ΓΙΑ QRCODE */
+/* ΤΡΟΠΟΠΟΙΗΜΕΝΗ ΕΚΔΟΣΗ ΤΟΥ invoice2pdf.js ΜΕ ΥΠΟΣΤΗΡΙΞΗ ΓΙΑ QRCODE/BARCODE */
 
 var data2print = {};
 
@@ -447,7 +447,7 @@ function renderPrintDoc(data2print, preview) {
 		pdf.addImage(base64AADELogo, 'JPEG', 5, pdf.internal.pageSize.height - 11, 40, 5.3);
 
 		if (data2print.base64QR != '') {
-			pdf.addImage(data2print.base64QR, 'JPEG', pdf.internal.pageSize.getWidth() - 30, pdf.internal.pageSize.height - 30, 25, 20, undefined, 'FAST');
+			pdf.addImage(data2print.base64QR, 'JPEG', pdf.internal.pageSize.getWidth() - 50, pdf.internal.pageSize.height - 30, 50, 20, undefined, 'FAST');
 		}
 	}
 
