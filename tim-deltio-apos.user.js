@@ -12,7 +12,7 @@
     if (window.location.href.includes("NewInvoiceByCustomerList")) {
         GM_xmlhttpRequest({
             method: "GET",
-            url: "https://gist.githubusercontent.com/marios8543/70caa65779171348bb2940fbf09cbeed/raw/9a1f3e878cd2c0eafca030b355fe82038cd6576a/timologio-invoice2pdf.js",
+            url: "https://raw.githubusercontent.com/marios8543/timologio-userscripts/main/tim-js-patch/timologio-invoice2pdf.js",
             onload: function (response) {
                 let invoice2pdfjs = document.createElement("script");
                 invoice2pdfjs.innerHTML = response.responseText;
