@@ -8,7 +8,7 @@
 // @grant        GM_xmlhttpRequest
 // @require      https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js
 // ==/UserScript==
-//
+
 (function () {
     if (window.location.href.includes("NewInvoiceByCustomerList")) {
         GM_xmlhttpRequest({
@@ -62,6 +62,7 @@
         let inv = getInvoice();
         let [aa, key] = __createDeltioAp(inv);
         __printDeltioAp(inv, aa, key);
+        __sendDeltioAp(inv, aa, code);
         return aa;
     }
 
@@ -126,6 +127,18 @@
                 renderPrintDoc(res, false);
             }
         });
+    }
+
+    function __sendDeltioAp(inv, aa, code) {
+        let url = localStorage.getItem("deltio-apostolis-remote-url");
+        if (url) {
+            GM_xmlhttpRequest({
+                method: "POST",
+                url: url,
+                data: JSON.stringify({inv: inv, aa: aa, code: code}),
+                headers: { "Content-Type": "application/json" }
+            });
+        }
     }
 
     async function __setInvoice(data) {
