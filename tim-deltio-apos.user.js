@@ -6,7 +6,7 @@
 // @author       marios8543
 // @match        https://mydata.aade.gr/timologio/*
 // @grant        GM_xmlhttpRequest
-// @require      https://raw.githubusercontent.com/davidshimjs/qrcodejs/master/qrcode.min.js
+// @require      https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js
 // ==/UserScript==
 //
 (function () {
@@ -24,7 +24,7 @@
         let qrcode = document.createElement("div");
         qrcode.setAttribute("id", "qrcode");
         qrcode.setAttribute("style", "display: none;");
-    
+
         let da_create_button = document.createElement("button");
         da_create_button.setAttribute("class", "btn btn-dark font-weight-bold rounded");
         da_create_button.innerHTML = "Έκδοση δελτίου αποστολής";
@@ -33,7 +33,7 @@
             let aa = createDeltioAp();
             alert(`Εκδόθηκε δελτίο αποστολής με Α/Α ${aa}`);
         }
-    
+
         let da_selection = document.createElement("select");
         da_selection.setAttribute("id", "deltio_ap_selection");
         da_selection.setAttribute("class", "custom-select mr-sm-2");
@@ -42,7 +42,7 @@
             let val = $("#deltio_ap_selection").val();
             restoreDeltioAp(val);
         }
-    
+
         setTimeout(function () {
             $("#deltio_ap_selection").append(`<option value="" selected>Δελτία αποστολής</option>`);
             for (const [key, value] of Object.entries(__getDeltia())) {
@@ -52,7 +52,7 @@
                 }
             }
         }, 100);
-    
+
         document.getElementById("myform").getElementsByClassName("input-group-sm")[0].appendChild(da_create_button);
         document.getElementById("myform").getElementsByClassName("input-group-sm")[0].appendChild(da_selection);
         document.body.appendChild(qrcode);
@@ -106,18 +106,10 @@
         return [aa, key];
     }
 
-    async function __createQrCode(code) {
-        let qr = new QRCode("qrcode", {
-            text: code,
-            colorDark: "#000000",
-            colorLight: "#ffffff",
-            correctLevel: QRCode.CorrectLevel.H
-        });
-        let el = qr._el.childNodes[1];
-        while (true) {
-            if (el.src) return el.src;
-            await __sleep(100);
-        }
+    function __createBarcode(text) {
+        var canvas = document.createElement("canvas");
+        JsBarcode(canvas, text, { format: "CODE39" });
+        return canvas.toDataURL("image/png");
     }
 
     function __printDeltioAp(inv, aa, code) {
@@ -130,10 +122,8 @@
                 res.invoice.mark = code;
                 res.invoiceTitle = "Δελτίο Αποστολής";
                 res.invoice.invoiceHeader.aa = aa;
-                __createQrCode(code).then(qr => {
-                    res.base64QR = qr;
-                    renderPrintDoc(res, false);
-                });
+                res.base64QR = __createBarcode(code);
+                renderPrintDoc(res, false);
             }
         });
     }
