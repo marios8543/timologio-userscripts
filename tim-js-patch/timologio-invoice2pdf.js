@@ -446,7 +446,7 @@ function renderPrintDoc(data2print, preview) {
 		pdf.text('Εκδόθηκε από την εφαρμογή:', 5, pdf.internal.pageSize.height - 13);
 		pdf.addImage(base64AADELogo, 'JPEG', 5, pdf.internal.pageSize.height - 11, 40, 5.3);
 
-		if (data2print.base64QR != '') {
+		if (data2print.base64QR != '' && data2print.base64QR != null && data2print.base64QR != undefined) {
 			pdf.addImage(data2print.base64QR, 'JPEG', pdf.internal.pageSize.getWidth() - 50, pdf.internal.pageSize.height - 30, 50, 20, undefined, 'FAST');
 		}
 	}
