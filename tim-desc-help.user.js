@@ -5,6 +5,8 @@
 // @description  Ορισμός περιγραφής προιόντος απευθείας στο τιμολόγιο / Παράκαμψη λίστας αγαθών.
 // @author       marios8543
 // @match        https://mydata.aade.gr/timologio/invoice/NewInvoiceByCustomerList*
+// @match        https://mydata.aade.gr/timologio/invoice/newinvoicebycustomer*
+// @match        https://mydata.aade.gr/timologio/invoice/newinvoice
 // @grant        none
 // ==/UserScript==
 
