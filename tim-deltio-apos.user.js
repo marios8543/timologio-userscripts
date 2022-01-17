@@ -62,7 +62,7 @@
         let inv = getInvoice();
         let [aa, key] = __createDeltioAp(inv);
         __printDeltioAp(inv, aa, key);
-        __sendDeltioAp(inv, aa, code);
+        __sendDeltioAp(inv, aa, key);
         return aa;
     }
 
