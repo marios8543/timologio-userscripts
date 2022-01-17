@@ -21,10 +21,6 @@
             }
         });
 
-        let qrcode = document.createElement("div");
-        qrcode.setAttribute("id", "qrcode");
-        qrcode.setAttribute("style", "display: none;");
-
         let da_create_button = document.createElement("button");
         da_create_button.setAttribute("class", "btn btn-dark font-weight-bold rounded");
         da_create_button.innerHTML = "Έκδοση δελτίου αποστολής";
@@ -109,7 +105,7 @@
 
     function __createBarcode(text) {
         var canvas = document.createElement("canvas");
-        JsBarcode(canvas, text, { format: "CODE39" });
+        JsBarcode(canvas, text);
         return canvas.toDataURL("image/png");
     }
 
