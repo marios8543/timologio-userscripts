@@ -51,7 +51,6 @@
 
         document.getElementById("myform").getElementsByClassName("input-group-sm")[0].appendChild(da_create_button);
         document.getElementById("myform").getElementsByClassName("input-group-sm")[0].appendChild(da_selection);
-        document.body.appendChild(qrcode);
     }
 
     function createDeltioAp() {
