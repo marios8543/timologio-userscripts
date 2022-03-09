@@ -55,11 +55,11 @@ if getattr(sys, 'frozen', False):
     curdir = path.dirname(sys.executable)
 else:
     curdir = path.dirname(path.abspath(__file__))
-if not path.isfile(path.join(curdir, 'template.label')):
-    label_file = open(path.join(curdir, 'template.label'), "w+")
+label = path.join(curdir, 'template.label')
+if not path.isfile(label):
+    label_file = open(label, "w+")
     label_file.write(LABEL_TEMPLATE)
     label_file.close()
-label = path.join(curdir, 'template.label')
 
 
 def print_label(text):
