@@ -537,8 +537,15 @@ var header = function (pdf, data2print, preview) {
 		{ first: 'Α.Φ.Μ.', third: data2print.invoice.issuer.vatNumber },
 		{ first: 'Επάγγελμα', third: issuerJob },
 		{ first: 'Δ.Ο.Υ.', third: issuerDoy },
-		{ first: 'Διεύθυνση', third: issuerAddress },
+		{ first: 'Διεύθυνση', third: issuerAddress }
 	];
+
+	if (localStorage.getItem("company-phone")) {
+		rows1.push({first: 'Τηλέφωνο', third: localStorage.getItem("company-phone")});
+	}
+	if (localStorage.getItem("company-email")) {
+		rows1.push({first: 'E-Mail', third: localStorage.getItem("company-email")});
+	}
 
 	var fillColor = 255;//white
 	if (coloredPrint === true) {
