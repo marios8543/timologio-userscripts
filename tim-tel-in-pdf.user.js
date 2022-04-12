@@ -6,7 +6,7 @@
 // @author       marios8543
 // @match        https://mydata.aade.gr/timologio/invoice/*
 // @match        https://mydata.aade.gr/timologio/company/*
-// @grant        none
+// @grant        GM_xmlhttpRequest
 // ==/UserScript==
 
 (function () {
