@@ -11,7 +11,7 @@ var _g_TotalBodyHeightPrintedPerPage = 0;
 var _g_h_Printed_TblItems = 0;
 
 function renderPrintDoc(data2print, preview) {
-	console.log("Running modified renderPrintDoc");
+	console.log("Running modified renderPrintDoc v2. tel&email support");
 
 	if (data2print == null || data2print === null || data2print == 'null' || data2print == undefined || data2print == 'undefined') {
 		return;
@@ -477,7 +477,8 @@ function renderPrintDoc(data2print, preview) {
 	//x.document.write(embed);
 	//x.document.close();
 
-	pdf.output('dataurlnewwindow');
+	//pdf.output('dataurlnewwindow');
+	pdf.save('printinvoice.pdf');
 }
 
 function printPreview2pdf(invoice) {
